@@ -1,0 +1,1204 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Engineering Student | Portfolio</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #080c16;
+            --card: #111a2a;
+            --primary: #64ffda;
+            --secondary: #8290ff;
+            --text: #edf2ff;
+            --muted: #8995ab;
+            --border: rgba(255,255,255,0.09);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 88%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .section-title span {
+            color: var(--primary);
+        }
+
+        .subtitle {
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        /* Background */
+
+        .glow {
+            position: fixed;
+            width: 450px;
+            height: 450px;
+            background: #465cff;
+            filter: blur(180px);
+            opacity: 0.12;
+            top: -150px;
+            right: -100px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Navigation */
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(8,12,22,0.85);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 75px;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .menu-btn {
+            display: none;
+            color: white;
+            background: none;
+            border: none;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        /* Hero */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 75px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 10px 16px;
+            border: 1px solid rgba(100,255,218,0.3);
+            border-radius: 30px;
+            color: var(--primary);
+            font-size: 12px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(40px, 6vw, 76px);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero h2 {
+            color: var(--muted);
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 550px;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #071018;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(100,255,218,0.2);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Abstract profile illustration */
+
+        .visual-card {
+            position: relative;
+            background: linear-gradient(145deg, #17243a, #0b111e);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .visual {
+            width: 190px;
+            height: 190px;
+            margin: auto;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 75px;
+            color: #071018;
+        }
+
+        .visual-card h3 {
+            margin-top: 25px;
+            font-size: 22px;
+        }
+
+        .visual-card p {
+            color: var(--muted);
+            margin: 10px auto;
+            font-size: 13px;
+        }
+
+        .tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .tags span {
+            font-size: 11px;
+            padding: 7px 12px;
+            background: rgba(100,255,218,0.08);
+            color: var(--primary);
+            border-radius: 20px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        /* About */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            gap: 30px;
+        }
+
+        .about-card {
+            background: var(--card);
+            padding: 35px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .about-card p {
+            color: var(--muted);
+            line-height: 1.9;
+            margin-bottom: 15px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .stat {
+            background: var(--card);
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .stat h3 {
+            font-size: 30px;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .stat p {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        /* Skills */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 28px;
+            border-radius: 16px;
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary);
+        }
+
+        .skill-icon {
+            font-size: 30px;
+            margin-bottom: 18px;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .skill-card p {
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: 13px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 18px;
+        }
+
+        .skill-tags span {
+            background: #1b2739;
+            padding: 7px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            color: #b8c5d9;
+        }
+
+        /* Projects */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+        }
+
+        .project-banner {
+            height: 150px;
+            background: linear-gradient(135deg, #152b42, #24294c);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 55px;
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content h3 {
+            margin-bottom: 12px;
+        }
+
+        .project-content p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .project-links a {
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Achievements */
+
+        .achievement-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .achievement {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 25px;
+            border-radius: 14px;
+        }
+
+        .achievement-icon {
+            font-size: 27px;
+        }
+
+        .achievement h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .achievement p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        /* Education */
+
+        .education-card {
+            background: var(--card);
+            border-left: 3px solid var(--primary);
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .education-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .education-card p {
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        /* Contact */
+
+        .contact-box {
+            text-align: center;
+            background: linear-gradient(145deg, #101c2d, #101827);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 60px 25px;
+        }
+
+        .contact-box h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        .contact-box h2 span {
+            color: var(--primary);
+        }
+
+        .contact-box p {
+            color: var(--muted);
+            max-width: 550px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Footer */
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        footer span {
+            color: var(--primary);
+        }
+
+        /* Animations */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+
+        @media (max-width: 900px) {
+            .hero-grid,
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 130px;
+                padding-bottom: 70px;
+            }
+
+            .visual-card {
+                max-width: 450px;
+                margin: auto;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+            }
+
+            .section {
+                padding: 70px 0;
+            }
+
+            .section-title {
+                font-size: 29px;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+            }
+
+            .hero h2 {
+                font-size: 17px;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 75px;
+                left: 0;
+                width: 100%;
+                background: #0b111e;
+                flex-direction: column;
+                text-align: center;
+                padding: 25px;
+                gap: 25px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-box h2 {
+                font-size: 29px;
+            }
+
+            .social-links {
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="glow"></div>
+
+<!-- NAVIGATION -->
+
+<header>
+    <nav class="container">
+
+        <a href="#home" class="logo">PORTFOLIO<span>.</span></a>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    </nav>
+</header>
+
+<!-- HERO -->
+
+<section class="hero container" id="home">
+
+    <div class="hero-grid">
+
+        <div>
+
+            <div class="badge">
+                ✦ Information Science & Engineering
+            </div>
+
+            <h1>
+                Engineering<br>
+                <span>Ideas into Reality.</span>
+            </h1>
+
+            <h2>
+                Student Developer | Technology Enthusiast
+            </h2>
+
+            <p>
+                A passionate engineering student exploring software
+                development, artificial intelligence, and emerging
+                technologies to create innovative solutions
+                for real-world challenges.
+            </p>
+
+            <div class="buttons">
+
+                <a href="#projects" class="btn btn-primary">
+                    Explore Projects →
+                </a>
+
+                <a href="#contact" class="btn btn-outline">
+                    Get In Touch
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="visual-card">
+
+            <div class="visual">
+                &lt;/&gt;
+            </div>
+
+            <h3>swapna</h3>
+
+            <p>Information Science & Engineering</p>
+
+            <p>Developer • Innovator • Learner</p>
+
+            <div class="tags">
+                <span>Programming</span>
+                <span>AI & ML</span>
+                <span>Web Development</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section class="section container reveal" id="about">
+
+    <h2 class="section-title">
+        About <span>Me</span>
+    </h2>
+
+    <p class="subtitle">
+        Discover my interests, learning journey, and approach to technology.
+    </p>
+
+    <div class="about-grid">
+
+        <div class="about-card">
+
+            <p>
+                I am an Information Science and Engineering student
+                interested in developing innovative software
+                applications and exploring emerging technologies.
+            </p>
+
+            <p>
+                My academic journey focuses on programming,
+                software engineering, artificial intelligence,
+                and data-driven problem-solving.
+            </p>
+
+            <p>
+                I enjoy collaborating on technical projects,
+                participating in coding challenges, and continuously
+                improving my development skills.
+            </p>
+
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                <h3>01</h3>
+                <p>Engineering Journey</p>
+            </div>
+
+            <div class="stat">
+                <h3>∞</h3>
+                <p>Learning Opportunities</p>
+            </div>
+
+            <div class="stat">
+                <h3>AI</h3>
+                <p>Area of Interest</p>
+            </div>
+
+            <div class="stat">
+                <h3>DEV</h3>
+                <p>Creative Mindset</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SKILLS -->
+
+<section class="section container reveal" id="skills">
+
+    <h2 class="section-title">
+        Technical <span>Skills</span>
+    </h2>
+
+    <p class="subtitle">
+        Technologies and concepts used to develop software solutions.
+    </p>
+
+    <div class="skills-grid">
+
+        <div class="skill-card">
+            <div class="skill-icon">⌨️</div>
+            <h3>Programming</h3>
+            <p>Building logical solutions through programming.</p>
+
+            <div class="skill-tags">
+                <span>Python</span>
+                <span>Java</span>
+                <span>C</span>
+                <span>C++</span>
+            </div>
+        </div>
+
+        <div class="skill-card">
+            <div class="skill-icon">🧠</div>
+            <h3>AI & Machine Learning</h3>
+            <p>Exploring intelligent systems and data-driven applications.</p>
+
+            <div class="skill-tags">
+                <span>TensorFlow</span>
+                <span>Keras</span>
+                <span>OpenCV</span>
+                <span>NumPy</span>
+            </div>
+        </div>
+
+        <div class="skill-card">
+            <div class="skill-icon">🌐</div>
+            <h3>Web Development</h3>
+            <p>Creating responsive and interactive web applications.</p>
+
+            <div class="skill-tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>Streamlit</span>
+            </div>
+        </div>
+
+        <div class="skill-card">
+            <div class="skill-icon">🗄️</div>
+            <h3>Database</h3>
+            <p>Organizing, managing, and retrieving application data.</p>
+
+            <div class="skill-tags">
+                <span>MySQL</span>
+                <span>MongoDB</span>
+                <span>SQL</span>
+            </div>
+        </div>
+
+        <div class="skill-card">
+            <div class="skill-icon">⚙️</div>
+            <h3>Developer Tools</h3>
+            <p>Tools for coding, debugging, and collaboration.</p>
+
+            <div class="skill-tags">
+                <span>Git</span>
+                <span>GitHub</span>
+                <span>VS Code</span>
+                <span>Linux</span>
+            </div>
+        </div>
+
+        <div class="skill-card">
+            <div class="skill-icon">🚀</div>
+            <h3>Core Concepts</h3>
+            <p>Foundational concepts for reliable software development.</p>
+
+            <div class="skill-tags">
+                <span>OOP</span>
+                <span>DSA</span>
+                <span>DBMS</span>
+                <span>OS</span>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section class="section container reveal" id="projects">
+
+    <h2 class="section-title">
+        Featured <span>Projects</span>
+    </h2>
+
+    <p class="subtitle">
+        Selected academic projects and technical explorations.
+    </p>
+
+    <div class="projects-grid">
+
+        <div class="project-card">
+
+            <div class="project-banner">🤖</div>
+
+            <div class="project-content">
+
+                <h3>AI-Powered Application</h3>
+
+                <p>
+                    An intelligent application designed to
+                    automate tasks and provide data-driven
+                    insights using machine learning.
+                </p>
+
+                <div class="skill-tags">
+                    <span>Python</span>
+                    <span>Machine Learning</span>
+                    <span>AI</span>
+                </div>
+
+                <div class="project-links">
+                    <a href="#">GitHub ↗</a>
+                    <a href="#">Live Demo ↗</a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="project-card">
+
+            <div class="project-banner">🌐</div>
+
+            <div class="project-content">
+
+                <h3>Web-Based Management System</h3>
+
+                <p>
+                    A responsive web application designed
+                    to simplify information management
+                    and improve user experience.
+                </p>
+
+                <div class="skill-tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
+
+                <div class="project-links">
+                    <a href="#">GitHub ↗</a>
+                    <a href="#">Live Demo ↗</a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="project-card">
+
+            <div class="project-banner">📊</div>
+
+            <div class="project-content">
+
+                <h3>Data Analysis Platform</h3>
+
+                <p>
+                    A data-driven solution that processes
+                    datasets and presents meaningful
+                    information through visualizations.
+                </p>
+
+                <div class="skill-tags">
+                    <span>Python</span>
+                    <span>Pandas</span>
+                    <span>Visualization</span>
+                </div>
+
+                <div class="project-links">
+                    <a href="#">GitHub ↗</a>
+                    <a href="#">Live Demo ↗</a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="project-card">
+
+            <div class="project-banner">💡</div>
+
+            <div class="project-content">
+
+                <h3>Innovative Engineering Project</h3>
+
+                <p>
+                    A creative engineering solution
+                    developed to address a practical
+                    challenge using modern technologies.
+                </p>
+
+                <div class="skill-tags">
+                    <span>Research</span>
+                    <span>Development</span>
+                    <span>Innovation</span>
+                </div>
+
+                <div class="project-links">
+                    <a href="#">GitHub ↗</a>
+                    <a href="#">Live Demo ↗</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ACHIEVEMENTS -->
+
+<section class="section container reveal" id="achievements">
+
+    <h2 class="section-title">
+        Achievements & <span>Recognition</span>
+    </h2>
+
+    <p class="subtitle">
+        Academic milestones, technical accomplishments, and learning experiences.
+    </p>
+
+    <div class="achievement-list">
+
+        <div class="achievement">
+            <div class="achievement-icon">🏆</div>
+            <div>
+                <h3>Technical Competition</h3>
+                <p>
+                    Recognition for outstanding performance
+                    in a technical competition.
+                </p>
+            </div>
+        </div>
+
+        <div class="achievement">
+            <div class="achievement-icon">📜</div>
+            <div>
+                <h3>Technical Certification</h3>
+                <p>
+                    Successfully completed a certification
+                    in a relevant engineering or technology domain.
+                </p>
+            </div>
+        </div>
+
+        <div class="achievement">
+            <div class="achievement-icon">💡</div>
+            <div>
+                <h3>Hackathon Participation</h3>
+                <p>
+                    Participated in a collaborative innovation
+                    event focused on developing practical solutions.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- EDUCATION -->
+
+<section class="section container reveal" id="education">
+
+    <h2 class="section-title">
+        Academic <span>Background</span>
+    </h2>
+
+    <p class="subtitle">
+        Educational foundation and areas of academic interest.
+    </p>
+
+    <div class="education-card">
+
+        <h3>Bachelor of Engineering</h3>
+
+        <p>Information Science and Engineering</p>
+
+        <p>University / Institution</p>
+
+        <p>Graduation Year</p>
+
+        <p style="margin-top: 15px;">
+            Focus Areas: Computer Science Fundamentals,
+            Software Development, Artificial Intelligence,
+            Data Structures, and Emerging Technologies.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="section container reveal" id="contact">
+
+    <div class="contact-box">
+
+        <h2>
+            Let's Build Something <span>Great.</span>
+        </h2>
+
+        <p>
+            Interested in collaboration, innovative ideas,
+            technical projects, or exploring opportunities
+            in software engineering and technology.
+        </p>
+
+        <a href="mailto:example@email.com"
+           class="btn btn-primary">
+            Get In Touch →
+        </a>
+
+        <div class="social-links">
+
+            <a href="#">GitHub</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Email</a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        Designed with <span>♥</span> and code.
+    </p>
+
+    <p style="margin-top: 10px;">
+        © 2026 | Information Science & Engineering
+    </p>
+
+</footer>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+    // Mobile navigation
+
+    function toggleMenu() {
+
+        document.getElementById("navLinks")
+            .classList.toggle("active");
+
+    }
+
+    // Close menu after clicking a navigation link
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            document.getElementById("navLinks")
+                .classList.remove("active");
+
+        });
+
+    });
+
+    // Scroll reveal animation
+
+    const observer = new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("visible");
+
+            }
+
+        });
+
+    }, {
+        threshold: 0.15
+    });
+
+    document.querySelectorAll(".reveal").forEach(section => {
+
+        observer.observe(section);
+
+    });
+
+</script>
+
+</body>
+</html>
